@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>森林消防员应急逃生系统</title>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="js/scrolltopcontrol.js"></script>
+		<script src="js/echarts.min.js"></script>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="header-con">
+				<div class="header-logo">
+					<div class="logo">
+						<img src="img/logo.png" alt="" />
+					</div>
+					<div class="name">
+						<img src="img/title.png" alt="" />
+					</div>
+				</div>
+				<div class="header-detail">
+					<ul>
+						<li class="current">网站首页</li>
+						<li>产品中心</li>
+						<li>新品预告</li>
+						<li>技术支持</li>
+						<li>关于我们</li>
+						<li>联系我们</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="content-wrap">
+			<!--轮播图-->
+			<div class="conbanner">
+				<ul id="lunbo">
+					<li class="banner ">
+						<img src="img/f1.png">
+					</li>
+					<li class="banner banner2">
+						<img src="img/f2.png">
+					</li>
+					<li class="banner banner3">
+						<img src="img/f3.png">
+					</li>
+				</ul>
+
+				<div class="left-btn">
+					<img src="img/left.png">
+				</div>
+				<div class="right-btn">
+					<img src="img/right.png">
+				</div>
+			</div>
+			<div id="line">
+				<hr>
+			</div>
+			<div class="tab-detail">
+				<div class="shouye">
+					<div class="shouye-top">
+					<div class="guanyu">
+						<div class="guanyu-title">
+							<span>公司理念</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">COMPANY PHILOSOPHY</span>
+						</div>
+						<div id="line"><hr></div>
+						<div class="guanyu-con">
+							<img src="img/linian.png"/>
+							
+						</div>
+					</div>
+					<div class="fuzeren">
+						<div class="fuze-title">
+							<span>项目创始人</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">PROJECT FOUNDER</span>
+						</div>
+						<div id="line"><hr></div>
+						<div class="fuze-con">
+							<div class="fuze-pic">
+								<img src="img/fuzeren.png" alt="" />
+							</div>
+							<div class="fuze-detail">
+								<h3>李继印</h3>
+								<p>√ 项目创始人，中国共产党党员</p>
+								<p>√ 2012-2017年五年的消防部队服役经历，在部队任职班长，有丰富的灭火救援实战经验，服役期间荣立个人三等功、个人嘉奖、优秀士兵等多项荣誉。</p>
+								<p>√ 在学院任职学生会主席、班长，会计专业，学习成绩优异，参加多项专业类、创新创业类比赛并荣获多项国家级、北京市级、校级荣誉。</p>
+								
+							</div>
+						</div>
+					</div>
+					</div>
+					<div class="shuju">
+						<div class="shuju-title">
+							<span>项目背景</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">PROJECT BACKGROUND</span>
+						</div>
+						<div id="line"><hr></div>						
+						<div id="main" style="width: 100%;height:400px;"></div>
+						<script>
+    //本次示例所使用到的表格插件为Echarts，所使用的功能配置都是参见http://echarts.baidu.com/option.html#title
+    var myChart = echarts.init(document.getElementById('main'));
+    var option = {
+    	title:{
+    		x:'center',
+        	y: 'bottom',
+    		text:'2015年-2019年森林火灾次数及森林消防员牺牲情况统计',
+    		textStyle:{
+    			fontSize:14
+    		},
+    	},
+        tooltip: {          //聚焦触发的效果，详情可参见。全局设置
+            trigger: 'axis',
+            
+        },
+        toolbox: {  
+        	//图表容器的右上角工具栏
+            feature: {
+                dataView: {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore: {show: true},
+                saveAsImage: {show: true}
+            }
+        },
+        legend: {           //图表图例注释
+            right: '10%' ,
+            data:['森林火灾次数','消防员牺牲人数']
+        },
+        xAxis: [        //x轴属性设置，需要详细了解该模块属性配置，可参见http://echarts.baidu.com/option.html#xAxis
+            {
+                type: 'category',           //表示类型为科目类
+                data: ['2015年','2016年','2017年','2018年','2019年']         //坐标轴的值
+            }
+        ],
+        yAxis: [                            //（可以有多个坐标轴），数组中的对象位置决定了yAxisIndex的值（yAxisIndex会在series中用到）
+            {
+                type: 'value',              //表示属性为value类
+                name: '森林火灾次数',                 //坐标轴名称
+                minInterval: 1,             //坐标最小划分单位，设置为1表示坐标轴节点保留整数
+                splitNumber: 4,             //指定坐标轴节点分割数（非强制），会按照预算自行调整最合适的分割数
+                axisLine:{                  //表示坐标轴是否显示
+                  show: false
+                },
+                splitLine: {                //表示分割线属性设置
+                    lineStyle: {            //表示分割线的样式
+                        type: 'dashed'         //虚线
+                    }
+                },
+                axisLabel: {
+                    formatter: '{value} 次'     //表示所有值得单位
+                }
+            },
+            {
+                type: 'value',
+                name: '消防员牺牲人数',
+                minInterval: 1,
+                splitNumber: 4,
+                splitLine: {
+                    show: false
+                },
+                axisLine:{
+                    show: false
+                },
+                axisLabel: {
+                    formatter: '{value} 人'
+                }
+            }
+           ],
+        series: [           //坐标轴实际数据内容
+            {
+                name:'森林火灾次数',             //数据名称
+                type:'bar', //数据表现形式（bar为柱形图，line为折线图）
+                barWidth:'20%',             //柱形图宽度
+                itemStyle:{                 //柱子的属性设置
+                    normal:{
+                        color: '#5fabff',  //柱子的颜色设置
+                        label : {show: true},
+                    },
+                   
+                },
+                
+                data: [2936, 2034, 3223, 2478, 2345]    //该条数据对应一条记录
+            },
+            {
+                name:'消防员牺牲人数',
+                type:'line',            //折线图
+                yAxisIndex: 1,
+                symbolSize: 10,
+                itemStyle:{
+                    normal:{
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            colorStops: [{      //渐变模式
+                                offset: 0, color: '#A43030' // 0% 处的颜色      //折线开始的颜色
+                            }, {
+                                offset: 1, color: '#A43030' // 100% 处的颜色    //折线结束的颜色，
+                            }],
+                            globalCoord: true // 缺省为 false
+                        },
+                        label : {show: true},
+                    }
+                },
+                data:[26,36,46,39,37]
+            }
+        ],
+        grid: {             //设置网格属性
+            left:'10%',     //网格距离容器左侧的距离
+            right:'10%',       //网格距离容器右侧的距离
+            borderWidth:1
+        }
+    };
+    myChart.setOption(option);
+ 
+</script>
+						<div id="bing" style="width: 500px;height:400px;"></div>
+						 <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('bing'));
+ 		
+        myChart.setOption({
+        	title:{
+        		text:'2015年-2019年消防员牺牲年龄情况统计',
+        		textStyle:{
+    			fontSize:14
+    		},
+        		x:'center',
+        		y:'bottom',
+        	},
+            series : [
+                {
+                    name: '消防员牺牲年龄情况',
+                    type: 'pie',    // 设置图表类型为饼图
+                    radius: '55%',// 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                    label : {
+　　　　normal : {
+　　　　　　formatter: '{b}:({d}%)',
+　　　　　　textStyle : {
+　　　　　　　　fontWeight : 'normal',
+　　　　　　　　fontSize : 15
+　　　　　　}
+　　　　}
+　　}, 
+                    data:[          // 数据数组，name 为数据项名称，value 为数据项值
+                        {value:1, name:'80后',itemStyle:{color:"#FFBA92"}},
+                        {value:24, name:'90后',itemStyle:{color:"#FF8080"}},
+                        {value:2, name:'00后',itemStyle:{color:"#99DDCC"}},
+                    ]
+                }
+            ]
+        })
+    </script>
+						<div class="summary">
+							<p>根据国家数据局数据统计，2015年至2019年，全国森林消防员近3万人，全国共发生森林火灾<span> 13016 </span>起，牺牲森林消防员<span> 184 </span>人。其中，<span>90后</span>牺牲人数占多数。</p>
+							<p style="margin-top: 10px;"><span>“风向突变”</span>和<span>“林火爆燃”</span>是危害消防员人身安全的两大核心问题。</p>
+						</div>
+					</div>
+				</div>
+				<div class="chanpin">
+					<div class="chanpin-top">
+						<div class="chanpin-bar">
+							<p id="bar-title">产品中心</p>
+							<div class="bar-con">
+								
+								<ul>
+									<li>自产产品</li>
+									<li>引进产品</li>
+									<li id="last-bar">研制中产品</li>
+								</ul>
+							</div>
+						</div>
+						<div class="zhongxin-top">
+							<div class="chanpin-left">
+								<p>产品简介</p>
+								<ul>
+									<li>挎包与防护服相互转换的新型防护装置</li>
+								</ul>
+								<img src="img/cp.png" style="width: 300px;" />
+											
+							</div>
+							<div class="chanpin-right">
+								<p>使用方法</p>
+								<ul>
+									<li>与现有的头盔、手套和作战靴配套使用</li>
+								</ul>
+								<img src="img/tk.png" style="width:120px"; />
+								<img src="img/st.png" style="width: 120px;"  />
+								<img src="img/zzx.png" style="width: 120px;" />
+							</div>
+						</div>
+					</div>	
+					<div class="chanpin-bottom">
+						<div class="chanpin-detail">
+							<div class="zhongxin">
+								<div class="zichan">
+									<div class="chanpin-title">
+										<span style="font-size:13pt ;">自产产品</span>
+										<span style="font-size: 11pt;color: #C0C0C0;">PRODUCED PRODUCTS</span>
+									</div>
+									<div id="line"><hr></div>
+									<div class="zichan-detail">
+										<div class="zichan-top">
+											<div class="zichan-left">
+												<h3>产品特性</h3>
+												<ul id="texing-left">
+													<li>速度快 —— 转换速度快，穿戴迅速。2s内可以从物资挎包转换为防护服，15秒内可以将防护服穿在身上</li>
+													<li>实用性强 —— 装进原有的必需品的同时增加一套防护服</li>
+													<!--<li>便携性 —— 方便携带</li>-->
+													
+												</ul>
+												<!--<ul>
+													<li>循环性 —— 可重复使用</li>
+													<li>紧急性 —— 使用方法简单，争分夺秒</li>
+												</ul>-->
+											</div>
+											
+												<img src="img/tx.png" alt="" />
+											
+										</div>
+										<div class="zichan-middle">
+											<h3>产品组成</h3>
+											<div class="zc-bcon">
+											
+											<div class="zucheng-row">
+												<img src="img/z2.png" class="imgshow">
+												<div class="img-info">
+													<div class="img-info-hide">
+														<p>耐火层</p>
+														<p class="hide-con">主要由高硅氧玻璃纤维组成，在高温保温隔热、防火、军工等领域，有着其他材料不可代替的优势。</p>
+													</div>
+												</div>
+											</div>
+											<div class="zucheng-row">
+												<div class="img-info p2">
+													<div class="img-info-hide">
+														<p>隔热层</p>
+														<p class="hide-con">主要由高硅氧针刺毡组成，具有断热、耐热、耐火性。</p>
+													</div>
+												</div>
+												<img src="img/z1.png" class="imgshow">
+											</div>
+											<div class="zucheng-row row3">
+												<img src="img/z3.png" class="imgshow">
+												
+												<div class="img-info">
+													<div class="img-info-hide">
+														<p>舒适层</p>
+														<p class="hide-con">主要由芳纶布组成，具有优异的阻燃、耐热性，是一种永久阻燃纤维。</p>
+													</div>
+												</div>
+											</div>
+										
+											</div>
+										</div>	
+										<!--<div class="zichan-bottom">
+											
+												<h3>使用方法</h3>
+												<ul>
+													<li>正常状态
+														<p>本产品是一个30cm×22cm×8cm的斜挎包，可作为物资挎包使用，结实、容量大，与正常军用挎包用法一致。</p>
+													</li>
+													<li>紧急状态
+														<p>可将背包拉链拉开，10秒内即可将挎包变成防护服，将防护服穿在身上穿过火场，可避免消防员受伤。</p>
+													</li>
+												</ul>
+											
+										</div>-->
+									</div>
+								</div>
+								<div class="yinjin">
+									<div class="chanpin-title">
+										<span style="font-size:13pt ;">引进产品</span>
+										<span style="font-size: 11pt;color: #C0C0C0;">IMPORTED PRODUCTS</span>
+									</div>
+									<div id="line"><hr></div>
+									<div class="yinjin-detail">
+										<ul>
+											<li>
+												<h3>警示呼叫装置</h3>
+												<div class="yj">
+													<img src="img/js.png" alt="" />
+													<p>将RHJ270T/D 消防员无线对讲语音报警呼救器集成至森林消防员应急逃生系统中，使其具有无线通信对讲、双语音无线报警功能。</p>
+												</div>
+											</li>
+											<li>
+												<h3>定位装置</h3>
+												<div class="yj">
+													<img src="img/dw.png" alt="" />
+													<p>将SH-10T型 消防4G无线智能手环定位跟踪系统，集成至森林消防员应急逃生系统中，使其具有具有心率、血压、计步、拍照、视频通话、GPS或北斗定位的功能。</p>
+												</div>
+											</li>
+										</ul>
+										
+										
+									</div>
+								</div>
+								<div class="yanzhi">
+									<div class="chanpin-title">
+										<span style="font-size:13pt ;">研制中产品</span>
+										<span style="font-size: 11pt;color: #C0C0C0;">PRODUCTS IN DEVELOPMENT</span>
+									</div>
+									<div id="line"><hr></div>
+									<div class="yanzhi-detail">
+										<h3>供氧装置</h3>
+										<div class="gy">
+											<img src="img/gy2.png" alt="" />
+											<img src="img/gy1.png" alt="" />
+											<p>将设计一个供氧防护头套内置导气管，导气管连接至包内的氧气瓶，可在关键时刻独立供氧，保证消防员的安全。</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+						</div>	
+					</div>
+				</div>
+				<div class="xinpin">
+					<div class="xinpin-bg">
+						<img src="img/zw.png" alt="" />
+						<p>暂 无  信 息</p>
+					</div>
+				</div>
+				<div class="zhichi">
+					<div class="zhichi-bg">
+						<img src="img/zw.png" alt="" />
+						<p>暂 无  信 息</p>
+					</div>
+				</div>
+				<div class="aboutus">
+					<div class="ab-top">
+						<div class="ab-title">
+							<span style="font-size: 13pt;">合作单位</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">COOPERATOR</span>
+						</div>
+						<div id="line"><hr></div>
+						<div class="hz-detail">
+							<div class="company-left">
+									<div class="left-detail">
+										<h3>南京高戈亚纤维玻璃研制有限公司</h3>
+										<div class="cl">
+											<img src="img/hz2.png" alt="" />
+										</div>
+										<p>已获得
+											南京高戈亚纤维玻璃研制有限公司
+											的<span>原材料供给</span>以及<span>技术支持</span>。</p>
+									</div>
+									<div class="right-detail">
+										<h3>北京东方海龙消防科技有限公司</h3>
+										<div class="cl">
+											<img src="img/hz1.png" alt="" />
+										</div>
+										<p>已获得
+											北京东方海龙消防科技有限公司
+											的<span>产品授权</span>以及<span>合作意向</span></p>
+									</div>
+							</div>
+							<div class="company-right">
+								<div class="liu">
+								
+								<ul>
+									<li>
+										<img src="img/ab1.png">
+									</li>
+									<li>
+										<img src="img/ab2.jpg">
+									</li>
+									<li>
+										<img src="img/ab3.jpg">
+									</li>
+									<li>
+										<img src="img/ab4.jpg">
+									</li>
+									<li>
+										<img src="img/ab5.jpg">
+									</li>
+								</ul>
+								
+							</div>
+							</div>
+						</div>
+					</div>
+					<div class="ab-middle">
+						<div class="ab-title">
+							<span style="font-size: 13pt;">专家团队</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">TEAM OF EXPERTS</span>
+						</div>
+						<div id="line"><hr></div>
+						<div class="zj-detail">
+							<div class="zj-left">
+								<h3>丁玉林 —— 技术指导</h3>
+								<p>前南京玻璃纤维研究设计院高级工程师、国家重点科技项目负责人。</p>
+								<p>曾获多项国家、部级科技进步奖。是建国七十周年有突出贡献科技人员荣誉奖章获得者。</p>
+								<p>目前任南京高戈亚纤维玻璃研制有限公司董事长。专门从事耐高温的高硅氧玻璃纤维研发、生产，在航空航天、消防等保温隔热的领域得到广泛应用。</p>
+							</div>
+							<div class="zj-right">
+								<img src="img/zj.png" alt="" />
+							</div>
+						</div>
+						<div class="zj-detail" style="overflow: hidden;margin-bottom: 30px;">
+							<div class="zj-two fr">
+								<h3>崔亚红 —— 市场指导</h3>
+								<p>现任北京东方海龙消防科技有限公司总经理。带领公司在国内外处于领先地位，
+									还带领公司获得各种专利12个，软件著作权6个。2017年还获得了“北京市高新技术企业”证书。
+									自2010年进入公司到现在，研制出了国内消防第一个“3G/4G音视频通信头盔”、消防员“三维定位指挥系统”、
+									“消防员火场终端指挥系统”、“定位搜救体征传输智能空呼”等产品。</p>
+							</div>
+							<div class="zj-two fl">
+								<img src="img/cyh.png" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="ab-bottom">
+						<div class="ab-title">
+							<span style="font-size: 13pt;">团队成员</span>
+							<span style="font-size: 11pt;color: #C0C0C0;">TEAM MEMBERS</span>
+						</div>
+						<div id="line"><hr></div>
+						<div class="td-detail">
+							<div class="tdpeople td1">
+								<div class="tp-pic">
+									<img src="img/p5.png" alt="" />
+									<p>黄楠</p>
+								</div>
+								<div class="tp-inform">
+									<h3>设计部负责人</h3>
+									<p>服装设计专业本科，曾获校内设计比赛二等奖</p>
+								</div>
+							</div>
+							<div class="tdpeople td2">
+								<div class="tp-pic">
+									<img src="img/std.png" alt="" />
+									<p>宋太达</p>
+								</div>
+								<div class="tp-inform">
+									<h3>运营部负责人</h3>
+									<p>11年灭火救援经验</p>
+								</div>
+							</div>
+							<div class="tdpeople td3">
+								<div class="tp-pic">
+									<img src="img/xdy.png" alt="" />
+									<p>薛德岩</p>
+								</div>
+								<div class="tp-inform">
+									<h3>研发部负责人</h3>
+									<p>12年灭火救援经验</p>
+								</div>
+							</div>
+							<div class="tdpeople td4">
+								<div class="tp-pic">
+									<img src="img/wn.png" alt="" />
+									<p>王宁</p>
+								</div>
+								<div class="tp-inform">
+									<h3>销售部负责人</h3>
+									<p>9年灭火救援经验</p>
+								</div>
+							</div>
+							<div class="tdpeople td5">
+								<div class="tp-pic">
+									<img src="img/p4.png" alt="" />
+									<p>姜晨凌</p>
+								</div>
+								<div class="tp-inform">
+									<h3>财务部负责人</h3>
+									<p>工商管理专业硕士</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="joinus">
+					<h3>联系我们</h3>
+					<div class="joinus-detail">
+						<p>项目负责人：李继印</p>
+						<p>联 系 方 式：13681221758</p>
+						<div class="wx">
+							<img src="img/erweima.jpg" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div align="center" style="margin-bottom: 20px;">
+				<div align="center">
+					<table border="0" width="1000" cellspacing="0" cellpadding="0" id="table654" height="35">
+						<tbody>
+							<tr>
+								<td width="75" valign="bottom">
+									<font face="微软雅黑" color="#333333" style="font-size: 13pt">
+										友情链接</font>
+								</td>
+								<td valign="bottom">
+									<p align="left">
+										<font color="#C0C0C0" style="font-size: 11pt">
+											LINK</font>
+									</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<table border="0" width="1000" cellspacing="1" cellpadding="0" id="table655" height="10">
+					<tbody>
+						<tr>
+							<td>
+								<hr>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table border="0" width="1000" cellspacing="1" cellpadding="0" id="table656">
+					<tbody>
+						<tr>
+							<td>
+								<table border="0" width="100%" cellspacing="0" cellpadding="0" height="15">
+
+									<tbody>
+										<tr>
+
+											<td align="center">
+												<p align="left">
+
+													<a href="http://www.xfjyzx.com/" target="_blank" class="{#class#}">国家消防装备质量监督检验中心</a>
+												</p>
+											</td>
+
+											<td align="center">
+												<p align="left">
+
+													<a href="http://www.cccf.net.cn/" target="_blank" class="{#class#}">公安部消防产品合格评定中心</a>
+												</p>
+											</td>
+
+											<td align="center">
+												<p align="left">
+
+													<a href="https://www.119.gov.cn/" target="_blank" class="{#class#}">应急管理部消防救援局</a>
+												</p>
+											</td>
+
+											<td align="center">
+												<p align="left">
+
+													<a href="http://www.cccf.com.cn/getIndex.do" target="_blank" class="{#class#}">中国消防产品信息网</a>
+												</p>
+											</td>
+											<td align="center">
+												<p align="left">
+
+													<a href="http://www.cfpa.cn/manage/html/index.html" target="_blank" class="{#class#}">中国消防协会</a>
+												</p>
+											</td>
+											<td align="center">
+												<p align="left">
+
+													<a href="http://www.firechina.cn/" target="_blank" class="{#class#}">消防中国网</a>
+												</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="footer-wrap">
+			<div class="footer-up">
+				<div class="footer-up-con">
+					<a href="">网站首页</a>
+					<font color="#FFFFFF">&nbsp;&nbsp; |&nbsp;&nbsp; </font>
+					<a href="">产品中心</a>
+					<font color="#FFFFFF">&nbsp;&nbsp; |&nbsp;&nbsp; </font>
+					<a href="">新品预告</a>
+					<font color="#FFFFFF">&nbsp;&nbsp; |&nbsp;&nbsp; </font>
+					<a href="">技术支持</a>
+					<font color="#FFFFFF">&nbsp;&nbsp; |&nbsp;&nbsp; </font>
+					<a href="">关于我们</a>
+					<font color="#FFFFFF">&nbsp;&nbsp; |&nbsp;&nbsp; </font>
+					<a href="">联系我们</a>
+				</div>
+			</div>
+			<div class="footer-down">
+				<div class="footer-down-con">
+					<p>版权所有：森林消防员紧急逃生系统</p>
+					<p>项目负责人：李继印</p>
+					<p>联系方式：13681221758</p>
+					<div class="footer-pic">
+						<img src="img/erweima.jpg" alt=""  style="width: 120px;"/>
+					</div>
+				</div>
+				
+				<div class="footer-null"></div>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+		<script>
+			$(".conbanner").hover(
+				function() {
+					$(".left-btn,.right-btn").show();
+				},
+				function() {
+					$(".left-btn,.right-btn").hide();
+				});
+			//1.当前图片显示，邻居图片隐藏
+			//2.点击左右键，切换图片
+			var index = 0;
+
+			function changeimg() {
+				$(".conbanner li").eq(index).show().siblings().hide();
+			};
+
+			function play() {
+				index++;
+				if(index > 2) {
+					index = 0;
+				};
+				changeimg();
+			};
+
+			$(".right-btn").click(function() {
+				play();
+			});
+			$(".left-btn").click(function() {
+				index--;
+				if(index < 0) {
+					index = 2;
+				};
+				changeimg();
+			});
+
+			var init = setInterval("play()", 3000);
+			
+			$(".header-detail li").click(function(){
+				var index=$(this).index();
+				$(this).addClass("current").siblings().removeClass("current");
+				$(".tab-detail>div").eq(index).show().siblings().hide();
+			});
+			$(".bar-con li").click(function(){
+				var index=$(this).index();
+				$(this).addClass("current").siblings().removeClass("current");
+				$(".zhongxin>div").eq(index).show().siblings().hide();
+			});
+			
+			$(".zucheng-row").hover(function(){
+				$(this).find(".img-info .img-info-hide").show();
+			},function(){
+				$(this).find(".img-info .img-info-hide").hide();
+			}
+			);
+		</script>
+		
+		
+	</body>
+
+</html>
